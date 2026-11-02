@@ -20,6 +20,9 @@ class Login extends Page {
         return $('#login-button');
     }
 
+    username = 'standard_user';
+    password = 'secret_sauce';
+
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password

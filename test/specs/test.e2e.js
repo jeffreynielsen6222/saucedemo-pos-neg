@@ -5,10 +5,9 @@ import Products from '../pageobjects/products.js'
 describe('My Login application', () => {
     it('should login with valid credentials', async () => {
         await Login.open();
-
-        await Login.login('standard_user', 'secret_sauce');
+        await Login.login(Login.username, Login.password);
         await expect(Products.title).toBeExisting();
         await expect(Products.title).toHaveText(
-            expect.stringContaining('Products'))
+            expect.stringContaining('Products'));
     });
 });
