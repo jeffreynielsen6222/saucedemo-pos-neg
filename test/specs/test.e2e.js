@@ -4,10 +4,11 @@ import Products from "../pageobjects/products.js"
 
 describe("My Login application", () => {
     it("should login with valid credentials", async () => {
-        for (let i = 0; i < Login.users.length; i++) {
-            const username = Login.users[i];
+        const users = Login.credentials.users;
+        for (let i = 0; i < users.length; i++) {
+            const username = users[i];
             await Login.open();
-            await Login.login(username, Login.password);
+            await Login.login(username, Login.credentials.password);
             await expect(Products.title).toBeExisting();
             await expect(Products.title).toHaveText(
                 expect.stringContaining("Products")
