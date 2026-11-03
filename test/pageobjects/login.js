@@ -20,7 +20,7 @@ class Login extends Page {
         return $("#login-button");
     }
 
-    username = "standard_user";
+    users = ["standard_user", "problem_user", "error_user", "visual_user"];
     password = "secret_sauce";
 
     /**
