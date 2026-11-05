@@ -4,15 +4,16 @@ import Products from "../pageobjects/products.js"
 
 describe("My Login application", () => {
     it("should login with valid credentials", async () => {
-        const users = Login.credentials.users;
-        for (let i = 0; i < users.length; i++) {
-            const username = users[i];
+        for (const username of Login.credentials.users) {
             await Login.open();
             await Login.login(username, Login.credentials.password);
             await expect(Products.title).toBeExisting();
-            await expect(Products.title).toHaveText(
-                expect.stringContaining("Products")
-            );
+            await expect(Products.title).toHaveText("Products");
         }
+
+        const itemName = "Sauce Labs Bolt T-Shirt";
+        await Products.addToCart(itemName);
+        const itemButton = await Products.getItemButton(itemName);
+        await expect(itemButton).toHaveText("Remove");
     });
 });
