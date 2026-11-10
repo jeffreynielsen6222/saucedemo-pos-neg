@@ -8,16 +8,20 @@ class Login extends Page {
     /**
      * define selectors using getter methods
      */
-    get inputUsername() {
+    get usernameInput() {
         return $("#user-name");
     }
 
-    get inputPassword() {
+    get passwordInput() {
         return $("#password");
     }
 
-    get btnSubmit() {
+    get loginButton() {
         return $("#login-button");
+    }
+
+    get error() {
+        return $("h3[data-test='error']");
     }
 
     credentials = {
@@ -30,9 +34,9 @@ class Login extends Page {
      * e.g. to login using username and password
      */
     async login(username, password) {
-        await this.inputUsername.setValue(username);
-        await this.inputPassword.setValue(password);
-        await this.btnSubmit.click();
+        await this.usernameInput.setValue(username);
+        await this.passwordInput.setValue(password);
+        await this.loginButton.click();
     }
 
     /**
