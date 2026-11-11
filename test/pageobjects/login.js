@@ -25,7 +25,14 @@ class Login extends Page {
     }
 
     credentials = {
-        users: ["standard_user", "problem_user", "error_user", "visual_user"],
+        users: [
+            "standard_user",
+            "locked_out_user",
+            "problem_user",
+            "performance_glitch_user",
+            "error_user",
+            "visual_user",
+        ],
         password: "secret_sauce",
     };
 

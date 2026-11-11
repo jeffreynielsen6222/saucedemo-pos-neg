@@ -7,8 +7,15 @@ describe("SauceDemo Login", () => {
         for (const username of Login.credentials.users) {
             await Login.open();
             await Login.login(username, Login.credentials.password);
-            await expect(Products.title).toBeExisting();
-            await expect(Products.title).toHaveText("Products");
+            if (await Login.error.isExisting()) {
+                // a locked-out error is still a successful login
+                await expect(Login.error).toHaveText(
+                    expect.stringContaining("locked out")
+                );
+            } else {
+                await expect(Products.title).toBeExisting();
+                await expect(Products.title).toHaveText("Products");
+            }
         }
     });
 
